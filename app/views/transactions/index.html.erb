@@ -3,12 +3,13 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Date</th>
       <th>Name</th>
-      <th>Amount</th>
-      <th>Type</th>
-      <th>Transaction Status</th>
-      <th><%=@test%></th>
-      <th><%=@sum%></th>
+     
+      <th>Debit</th>
+       <th>Deposit</th>
+      <th>Status</th>
+      <th>Transaction</th>
       <th><%=@go2%></th>
     </tr>
   </thead>
@@ -16,11 +17,24 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
+        <td><%= time_ago_in_words(transaction.created_at) %></td>
         <td><%= transaction.name %></td>
-        <td><%= number_to_currency(transaction.amount) %></td>
-        <td><%= transaction.trans_type %></td>
+      
+      
+         <% if !transaction.debit.nil? %>
+        <td><em><%= number_to_currency(transaction.debit) %></em></td>
+        <%else%>
+          <td><%="-"%></td>
+        <%end%>
+
+         <%if transaction.credit.nil? %>
+             <td><%="-"%></td>
+             <%else%>
+
+        <td><em><%= number_to_currency(transaction.credit) %></em></td>
+       <%end%>
         <td><%= transaction.cleared ? "Transaction is cleared" : "Transaction is not cleared" %></td>
-        <td><%= link_to 'Show', transaction %></td>
+        <td><%= link_to 'Detailed View', transaction %></td>
         <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -30,4 +44,4 @@
 
 <br>
 
-<%= link_to 'New Transaction', new_transaction_path %>
+<strong><%= link_to 'Add Deposit', credit_path %> | | <%= link_to 'Add Debit', debit_path %></strong>

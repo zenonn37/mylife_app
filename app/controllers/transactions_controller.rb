@@ -1,11 +1,13 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
+  before_action :new_transaction, only: [:new,:credit,:debit]
+
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.recent
-    @sum = Transaction.sum('amount')
+    @transactions = Transaction.all
+    @sum = Transaction.sum('credit')
     #myTest = Transaction.new
     #@test.myTest.testing
     go = Test.new("hello")
@@ -18,7 +20,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/1.json
   def show
 
-    @transaction.excessive ? @overSpent ="you over spent" : @overSpent ="no issues we this transaction"
+    #@transaction.excessive ? @overSpent ="you over spent" : @overSpent ="no issues we this transaction"
     
 
   end
@@ -26,6 +28,14 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+  end
+
+  def credit
+     @transaction = Transaction.new
+  end
+  def debit
+    @transaction = Transaction.new
+    
   end
 
   # GET /transactions/1/edit
@@ -74,12 +84,17 @@ class TransactionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def new_transaction
+      @transaction = Transaction.new
+      
+    end
     def set_transaction
       @transaction = Transaction.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:name, :amount, :trans_type,:cleared)
+      params.require(:transaction).permit(:name, :credit,:debit, :trans_type,:cleared)
     end
 end

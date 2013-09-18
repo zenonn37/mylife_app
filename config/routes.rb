@@ -1,6 +1,9 @@
 MylifeApp::Application.routes.draw do
 
   root to: 'transactions#index'
+
+  get 'credit',to: 'transactions#credit', as: :credit
+  get 'debit', to: 'transactions#debit', as: :debit
   resources :transactions
 
   # The priority is based upon order of creation: first created -> highest priority.

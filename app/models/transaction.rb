@@ -7,19 +7,19 @@ class Transaction < ActiveRecord::Base
 
 	#scopes
 
-	scope :recent, ->{where('trans_type = ? AND cleared =?','Withdrawel',true)}
+	scope :recent, ->{where('trans_type = ?',true)}
 
 
 
 	public
 
-	def excessive
+	#def excessive
 
-		if amount > 1400.00 && trans_type == 'Withdrawel'
-			return true
-		end
+		#if credit > 1400.00 
+		#	return true
+		#end
 
-	end
+	#end
 
 
 

@@ -7,7 +7,7 @@
 
 <p>
   <strong>Amount:</strong>
-  <%= number_to_currency(@transaction.amount) %>
+  <%= number_to_currency(@transaction.credit) %>
 </p>
 
 <p>
@@ -19,9 +19,7 @@
   <strong>Status:</strong>
   <%= @transaction.cleared ? "Transaction is cleared" : "Transaction is not cleared" %>
 </p>
-<p>
-<strong><em><%=@overSpent%></em></strong>
-</p>
+
 
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
