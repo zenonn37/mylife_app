@@ -4,12 +4,23 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.recent
+    @sum = Transaction.sum('amount')
+    #myTest = Transaction.new
+    #@test.myTest.testing
+    go = Test.new("hello")
+    @go = go.speak(8)
+    @go2 = go.addAll(10,5,3,2)
+
   end
 
   # GET /transactions/1
   # GET /transactions/1.json
   def show
+
+    @transaction.excessive ? @overSpent ="you over spent" : @overSpent ="no issues we this transaction"
+    
+
   end
 
   # GET /transactions/new

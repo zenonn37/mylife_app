@@ -19,6 +19,10 @@
   <strong>Status:</strong>
   <%= @transaction.cleared ? "Transaction is cleared" : "Transaction is not cleared" %>
 </p>
+<p>
+<strong><em><%=@overSpent%></em></strong>
+</p>
+
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
 <%= link_to 'Back', transactions_path %>
