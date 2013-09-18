@@ -19,6 +19,8 @@
       <tr>
         <td><%= time_ago_in_words(transaction.created_at) %></td>
         <td><%= transaction.name %></td>
+
+         
       
       
          <% if !transaction.debit.nil? %>
@@ -27,18 +29,41 @@
           <td><%="-"%></td>
         <%end%>
 
+
          <%if transaction.credit.nil? %>
              <td><%="-"%></td>
              <%else%>
 
         <td><em><%= number_to_currency(transaction.credit) %></em></td>
        <%end%>
+
+       
         <td><%= transaction.cleared ? "Transaction is cleared" : "Transaction is not cleared" %></td>
         <td><%= link_to 'Detailed View', transaction %></td>
         <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <tfoot>
+      <tr>
+
+        <td>Debit Totals:</td> <td></td><td><%=number_to_currency @debitSum%></td>
+
+
+      </tr>
+
+       <tr>
+
+        <td>Deposit Totals:</td> <td></td><td></td><td><%=number_to_currency @creditSum%></td>
+      </tr>
+
+
+        <tr>
+
+        <td>Balance:</td> <td></td><td></td><td><%=number_to_currency @bal%></td>
+      </tr>
+
+    </tfoot>
   </tbody>
 </table>
 

@@ -7,7 +7,9 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
-    @sum = Transaction.sum('credit')
+    @creditSum = Transaction.sum('credit')
+    @debitSum = Transaction.sum('debit')
+    @bal = @creditSum - @debitSum
     #myTest = Transaction.new
     #@test.myTest.testing
     go = Test.new("hello")
