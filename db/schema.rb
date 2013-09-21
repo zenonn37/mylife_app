@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130918155115) do
+ActiveRecord::Schema.define(version: 20130921000735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20130918155115) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "trans_type"
-    t.boolean  "cleared",    default: false
-    t.integer  "debit"
-    t.integer  "credit"
+    t.boolean  "cleared",                            default: false
+    t.decimal  "credit",     precision: 8, scale: 2
+    t.decimal  "debit",      precision: 8, scale: 2
   end
 
 end

@@ -7,7 +7,7 @@ class Transaction < ActiveRecord::Base
 
 	#scopes
 
-	scope :recent, ->{where('trans_type = ?',true)}
+	#scope :recent, ->{where('trans_type = ?',true)}
 
 
 
