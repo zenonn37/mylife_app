@@ -4,6 +4,7 @@ MylifeApp::Application.routes.draw do
 
   get 'credit',to: 'transactions#credit', as: :credit
   get 'debit', to: 'transactions#debit', as: :debit
+  get 'current_transactions', to: 'transactions#current_transactions', as: :current_transactions
   resources :transactions
 
   # The priority is based upon order of creation: first created -> highest priority.

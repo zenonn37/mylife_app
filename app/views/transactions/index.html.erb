@@ -16,7 +16,7 @@
 
   <tbody>
     <% @transactions.each do |transaction| %>
-      <tr>
+      <tr class="<%=cycle( 'list_line_even', 'list_line_odd')%>">
         <td><%= time_ago_in_words(transaction.created_at) %></td>
         <td><%= transaction.name %></td>
 
@@ -69,4 +69,4 @@
 
 <br>
 
-<strong><%= link_to 'Add Deposit', credit_path %> | | <%= link_to 'Add Debit', debit_path %></strong>
+<strong><%= link_to 'Add Deposit', credit_path,class: 'new_credit',remote: true %> | | <%= link_to 'Add Debit', debit_path,class: 'new_debit',remote: true %></strong>

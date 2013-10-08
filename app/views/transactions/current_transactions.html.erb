@@ -1,0 +1,49 @@
+<h2>Current Transactions</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Name</th>
+     
+      <th>Debit</th>
+       <th>Deposit</th>
+      <th>Status</th>
+      <th>Transaction</th>
+   
+    </tr>
+  </thead>
+<div class="transactions">
+  <%=render 'current_all'%>
+  </div>
+
+
+
+    <tfoot>
+      <tr>
+
+        <td>Debit Totals:</td> <td></td><td><%=number_to_currency @debitSum%></td>
+
+
+      </tr>
+
+       <tr>
+
+        <td>Deposit Totals:</td> <td></td><td></td><td><%=number_to_currency @creditSum%></td>
+      </tr>
+
+
+        <tr>
+
+        <td>Balance:</td> <td></td><td></td><td><%=number_to_currency @bal%></td>
+      </tr>
+
+    </tfoot>
+  </tbody>
+</table>
+
+<br>
+
+<strong><%= link_to 'Add Deposit', credit_path,class: 'new_credit',remote: true %> | | <%= link_to 'Add Debit', debit_path,class: 'new_debit',remote: true %></strong>
+
+

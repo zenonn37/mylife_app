@@ -1,0 +1,32 @@
+
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr class="<%=cycle( 'list_line_even', 'list_line_odd')%>">
+        <td><%= time_ago_in_words(transaction.created_at) %></td>
+        <td><%= transaction.name %></td>
+
+         
+      
+      
+         <% if !transaction.debit.nil? %>
+        <td><em><%= number_to_currency(transaction.debit) %></em></td>
+        <%else%>
+          <td><%="-"%></td>
+        <%end%>
+
+
+         <%if transaction.credit.nil? %>
+             <td><%="-"%></td>
+             <%else%>
+
+        <td><em><%= number_to_currency(transaction.credit) %></em></td>
+       <%end%>
+
+       
+        <td><%= transaction.cleared ? "Transaction is cleared" : "Transaction is not cleared" %></td>
+        <td><%= link_to 'Detailed View', transaction %></td>
+        <td><%= link_to 'Update', edit_transaction_path(transaction) %></td>
+        
+      </tr>
+    <% end %>

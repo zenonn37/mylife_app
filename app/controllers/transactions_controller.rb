@@ -18,6 +18,16 @@ class TransactionsController < ApplicationController
 
   end
 
+  def current_transactions
+
+     @transactions = Transaction.all
+    @creditSum = Transaction.sum('credit')
+    @debitSum = Transaction.sum('debit')
+    @bal = @creditSum - @debitSum
+
+    
+  end
+
   # GET /transactions/1
   # GET /transactions/1.json
   def show
@@ -53,6 +63,7 @@ class TransactionsController < ApplicationController
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
         format.json { render action: 'show', status: :created, location: @transaction }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
@@ -67,6 +78,7 @@ class TransactionsController < ApplicationController
       if @transaction.update(transaction_params)
         format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
         format.json { head :no_content }
+         format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @transaction.errors, status: :unprocessable_entity }
