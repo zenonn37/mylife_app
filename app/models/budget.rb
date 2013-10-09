@@ -4,6 +4,8 @@ class Budget < ActiveRecord::Base
 
 	before_save :check_type
 
+	before_save :amount_type
+
 
 	def check_type
 
@@ -12,5 +14,22 @@ class Budget < ActiveRecord::Base
 		else
             self.img = "glyphicons_213_up_arrow.png"
 		end
+	end
+
+	def amount_type
+
+			if trans_type == "deposit"
+
+				self.debit = amount
+				
+                if debit >= 1
+				self.amount = 0;
+			end
+
+
+		
+	        
+		end
+		
 	end
 end

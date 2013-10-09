@@ -4,8 +4,16 @@ class BudgetsController < ApplicationController
   # GET /budgets
   # GET /budgets.json
   def index
-    @budgets = Budget.all
+     @budgets = Budget.all
      @budget = Budget.new
+     totalEntry = Budget.sum('amount')
+     totalDeposit = Budget.sum('debit')
+     @trans = Budget.count('id');
+     @amount = totalEntry
+     @deposit = totalDeposit 
+     @debt = (totalDeposit - totalEntry) 
+
+
   end
 
   # GET /budgets/1
@@ -43,7 +51,7 @@ class BudgetsController < ApplicationController
   def update
     respond_to do |format|
       if @budget.update(budget_params)
-        format.html { redirect_to @budget, notice: 'Budget was successfully updated.' }
+        format.html { redirect_to budgets_path, notice: 'Budget was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

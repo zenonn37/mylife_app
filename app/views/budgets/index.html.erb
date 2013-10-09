@@ -1,16 +1,34 @@
+<div class ="row">
+  <div class ="large-8 column"><div class="tracker">
+<h2 class="subheading">Personal Budget</h2>
+
+  </div>
+
+</div>
+   <div class="large-4 column">
+
+       <h3></h3>
+   </div>
+
+
+</div>
+
+
+
 <div class="row">
 
   <div class="large-12 column">
 
-<h2 class="subheading">Budget Entrys</h2>
+
 
 <table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Amount</th>
-      <th>Repeat</th>
+      <th>Debits</th>
+      <th>Deposits</th>
+       <th>BAL: <%=number_to_currency("#{@debt}")%> || Entrys:<%=@trans%></th>
      
      
     </tr>
@@ -19,16 +37,24 @@
   <tbody>
     <% @budgets.each do |budget| %>
       <tr class="hovers">
-        <td><%= link_to "#{budget.name}", budget %></td>
+        <td><strong><%= link_to "#{budget.name}", budget %></strong></td>
         <td><em><%= budget.trans_type %></em></td>
-        <td><%= number_to_currency(budget.amount) %></td>
-        <td><%= budget.repeat ? "Yes" : "No"%></td>
-
-        <td><%=image_tag(budget.img) %></td>
+        <td class="debit"><%= number_to_currency("-#{budget.amount}") %></td>
+           <td class="credit"><%= number_to_currency(budget.debit) %></td>
+              <td><%=image_tag(budget.img) %></td>
        
       </tr>
     <% end %>
   </tbody>
+  <tfoot>
+<tr>
+
+<td class="debit" colspan="4">Current Debits: -<%= number_to_currency("#{@amount}")%></td>
+<td class="credit" colspan="1">Current Credits: +<%= number_to_currency("#{@deposit}")%></td>
+
+</tr>
+
+  </tfoot>
 </table>
 
 <br>
@@ -44,6 +70,9 @@
 
  <a class="close-reveal-modal">&#215;</a>
  </div>
+
+
+ 
 
 
 

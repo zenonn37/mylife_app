@@ -126,9 +126,9 @@ $default-float: left;
 
 // Media Queries
 
-// $small-screen: 768px;
-// $medium-screen: 1280px;
-// $large-screen: 1440px;
+ $small-screen: 768px;
+ $medium-screen: 1280px;
+ $large-screen: 1440px;
 
 // $screen: "only screen";
 // $small: "only screen and (min-width: #{$small-screen})";
@@ -1256,12 +1256,12 @@ $default-float: left;
 
 // Background color for the top bar
 
-// $topbar-bg-color: #111;
+ $topbar-bg-color: #556B2F;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 
-// $topbar-height: 45px;
+ $topbar-height: 65px;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
@@ -1271,7 +1271,7 @@ $default-float: left;
 // Controlling the styles for the title in the top bar
 
 // $topbar-title-weight: bold;
-// $topbar-title-font-size: em-calc(17);
+ $topbar-title-font-size: em-calc(24);
 
 // Style the top bar dropdown elements
 
