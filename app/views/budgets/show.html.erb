@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @budget.name %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @budget.trans_type %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @budget.amount %>
+</p>
+
+<p>
+  <strong>Repeat:</strong>
+  <%= @budget.repeat %>
+</p>
+
+<p>
+  <strong>Img:</strong>
+  <%= @budget.img %>
+</p>
+
+<p><%= link_to 'Edit', edit_budget_path(@budget) %> |
+
+</p>
+<p>
+<%= link_to 'Back', budgets_path %>|
+</p>
+<p>
+<%= link_to 'Destroy Entry', @budget, method: :delete, data:{confirm:"Are you sure"}%>
+</p>

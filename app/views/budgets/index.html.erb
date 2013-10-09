@@ -1,0 +1,55 @@
+<div class="row">
+
+  <div class="large-12 column">
+
+<h2 class="subheading">Budget Entrys</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Amount</th>
+      <th>Repeat</th>
+     
+     
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @budgets.each do |budget| %>
+      <tr class="hovers">
+        <td><%= link_to "#{budget.name}", budget %></td>
+        <td><em><%= budget.trans_type %></em></td>
+        <td><%= number_to_currency(budget.amount) %></td>
+        <td><%= budget.repeat ? "Yes" : "No"%></td>
+
+        <td><%=image_tag(budget.img) %></td>
+       
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<div id="myModal" class="reveal-modal">
+
+ <h2 class="model-heading">Budget Entry</h2>
+
+
+
+ <%= render 'form' %>
+
+ <a class="close-reveal-modal">&#215;</a>
+ </div>
+
+
+
+<a href="#" data-reveal-id="myModal" class="button">Add Entry</a>
+
+
+
+   </div>
+</div>

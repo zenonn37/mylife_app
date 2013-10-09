@@ -32,9 +32,14 @@ group :doc do
   gem 'sdoc', require: false
 end
 #bootstrap-sass
-gem 'bootstrap-sass'
+#gem 'bootstrap-sass'
 #simple_form
 gem 'simple_form'
+
+#zurb-foundation
+gem 'zurb-foundation'
+
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
