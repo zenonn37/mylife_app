@@ -1,0 +1,40 @@
+
+@import 'foundation_mixins_only';
+
+.model-heading{
+
+	color: lightgrey ;
+}
+
+.models-forms{
+	width: 400px;
+}
+
+
+.hover{
+	background-color: #4682B4;
+}
+
+a{
+	color: #000;
+}
+
+.debit{
+
+  color: #B22222;
+
+}
+
+.credit{
+	color: #556B2F;
+}
+
+.my-button{
+	@include button(
+
+
+		$bg:#000,
+		$radius:10px
+	);
+
+}
