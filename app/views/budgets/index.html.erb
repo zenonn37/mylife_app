@@ -38,13 +38,17 @@
   <tbody>
     <% @budgets.each do |budget| %>
       <tr class="hovers">
-        <td><strong><%= link_to "#{budget.name}", budget %></strong></td>
+        <td><strong><%= link_to "#{budget.name}", budget %></strong>
+
+          <%budget.categorys.each do |category|%>
+           <br/><em class="small"><%=category.name%></em>
+           <%end%>
+
+        </td>
         <td><em><%= budget.trans_type %></em></td>
         <td class="debit"><%= number_to_currency("-#{budget.amount}") %></td>
            <td class="credit"><%= number_to_currency(budget.debit) %></td>
-           <%budget.categories.each do |category|%>
-           <td><%=category.name%></td>
-           <%end%>
+          
               <td><%=image_tag(budget.img) %></td>
        
       </tr>

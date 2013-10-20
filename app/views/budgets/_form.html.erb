@@ -1,16 +1,52 @@
 
 <div class="models-forms">
-<%= simple_form_for(@budget) do |f| %>
-  <%= f.error_notification %>
+<%= form_for(@budget) do |f| %>
+ 
 
-  <div class="inputs">
-    <%= f.input :name %>
-    <%= f.input :trans_type,collection:[:withdraw,:deposit] %>
-    <%= f.input :amount %>
-    <%= f.association :categories%>
-    <%= f.input :repeat, as: :boolean %>
-  
+
+  <div class="field">
+    
+    <%=f.label :name%><br/>
+    <%=f.text_field :name%>
+
   </div>
+
+
+  <div class="field">
+    
+    <%=f.label :trans_type
+    %><br/>
+    <%=f.select :trans_type,['withdraw','deposit']%>
+
+  </div>
+
+  <div class="field">
+
+   <%=f.label :amount%><br/>
+   <%=f.text_field :amount%>
+
+  </div>
+
+  <div class="field">
+
+   <%=f.label :category_ids, 'Categorys'%><br/>
+   <%=f.collection_select :category_ids, Category.order(:name),:id,:name,{},{multiple:true}%>
+
+  </div>
+
+
+  <div class="field">
+
+   <%=f.label :repeat%><br/>
+   <%=f.check_box :repeat%>
+
+  </div>
+
+
+
+
+
+ 
 
   <div class="actions">
     <%= f.button :submit %>
