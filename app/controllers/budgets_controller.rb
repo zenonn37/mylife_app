@@ -33,17 +33,18 @@ class BudgetsController < ApplicationController
   # POST /budgets
   # POST /budgets.json
   def create
-    @budget = Budget.new(budget_params)
+    render text: params[:budget].inspect
+    #@budget = Budget.new(budget_params)
 
-    respond_to do |format|
-      if @budget.save
-        format.html { redirect_to budgets_path, notice: 'Budget was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @budget }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @budget.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+     # if @budget.save
+       # format.html { redirect_to budgets_path, notice: 'Budget was successfully created.' }
+       # format.json { render action: 'show', status: :created, location: @budget }
+     # else
+       # format.html { render action: 'new' }
+       # format.json { render json: @budget.errors, status: :unprocessable_entity }
+     # end
+    #end
   end
 
   # PATCH/PUT /budgets/1
@@ -78,6 +79,6 @@ class BudgetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def budget_params
-      params.require(:budget).permit(:name, :trans_type, :amount, :repeat, :img)
+      params.require(:budget).permit(:name, :trans_type, :amount, :repeat, :img,:category_ids)
     end
 end

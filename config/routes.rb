@@ -2,11 +2,16 @@ MylifeApp::Application.routes.draw do
 
  
 
+  get "categories/index"
+  get "categories/edit"
+  get "categories/new"
   root to: 'transactions#index'
 
   get 'credit',to: 'transactions#credit', as: :credit
   get 'debit', to: 'transactions#debit', as: :debit
   get 'current_transactions', to: 'transactions#current_transactions', as: :current_transactions
+
+  resources :categories
   resources :transactions
   resources :budgets
 

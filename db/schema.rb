@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012234908) do
+ActiveRecord::Schema.define(version: 20131016152200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,29 @@ ActiveRecord::Schema.define(version: 20131012234908) do
     t.decimal  "debit"
   end
 
+  create_table "budgets_categories", force: true do |t|
+    t.integer  "budget_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "budgets_categorys", force: true do |t|
+    t.integer  "budget_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "categories", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "budget_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

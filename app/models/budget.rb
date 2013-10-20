@@ -1,5 +1,7 @@
 class Budget < ActiveRecord::Base
 
+	has_and_belongs_to_many :categories
+
 	#add before_save to check for transaction type and assign correct image
 
 	before_save :check_type

@@ -28,6 +28,7 @@
       <th>Type</th>
       <th>Debits</th>
       <th>Deposits</th>
+        <th>Category</th>
        <th>BAL: <%=number_to_currency("#{@debt}")%> || Entrys:<%=@trans%></th>
      
      
@@ -41,6 +42,9 @@
         <td><em><%= budget.trans_type %></em></td>
         <td class="debit"><%= number_to_currency("-#{budget.amount}") %></td>
            <td class="credit"><%= number_to_currency(budget.debit) %></td>
+           <%budget.categories.each do |category|%>
+           <td><%=category.name%></td>
+           <%end%>
               <td><%=image_tag(budget.img) %></td>
        
       </tr>
