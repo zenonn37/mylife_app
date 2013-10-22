@@ -25,10 +25,11 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Due Date</th>
       <th>Type</th>
       <th>Debits</th>
       <th>Deposits</th>
-        <th>Category</th>
+        <th>Late Fees</th>
        <th>BAL: <%=number_to_currency("#{@debt}")%> || Entrys:<%=@trans%></th>
      
      
@@ -45,11 +46,13 @@
            <%end%>
 
         </td>
+
+        <td><%= budget.due_date%></td>
         <td><em><%= budget.trans_type %></em></td>
         <td class="debit"><%= number_to_currency("-#{budget.amount}") %></td>
            <td class="credit"><%= number_to_currency(budget.debit) %></td>
           
-              <td><%=image_tag(budget.img) %></td>
+              <td><%= budget.late_fees %></td>
        
       </tr>
     <% end %>
